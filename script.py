@@ -37,7 +37,11 @@ if not available_slots:
 
 TELEGRAM_BOT_TOKEN = "1086038513:AAFZWXrGI8JzFwcpycBfMt-vgCbjBMtw6FY"
 TELEGRAM_CHAT_ID = "751571062"
-text = f"Slot disponibili: {len(available_slots)}"
+
+text = f"{len(available_slots)} slot disponibili:"
+for slot in available_slots:
+    text += f"\n• {slot.day} {slot.timeframe}"
+
 data = { "chat_id": TELEGRAM_CHAT_ID, "text": text }
 data = urllib.parse.urlencode(data).encode()
 url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
