@@ -27,7 +27,7 @@ available_slots = []
 
 for day in json["orario"]:
     for slot in day["slots"]:
-        is_available = slot["active"]
+        is_available = slot["active"] > 0
         if is_available:
             available_slots.append(Slot(day=day["dayDate"], timeframe=slot["title"]))
 
